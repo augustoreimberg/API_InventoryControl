@@ -16,7 +16,7 @@ class CreateUserService{
         })
 
         if (userAlreadyExists) {
-            throw new Error("Email lready exists")
+            throw new Error("Email already exists")
         }
 
         //encrypting user password
