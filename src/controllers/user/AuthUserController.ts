@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { AuthUserService } from "../../services/user/AuthUserService";
 import { AuthRequest } from "../../models/interfaces/user/auth/AuthRequest";
 
-class authUserController {
+class AuthUserController {
     async handle(request: Request, response: Response) {
         const { email, password }: AuthRequest = request.body;
         const authUserService = new AuthUserService();
@@ -13,4 +13,4 @@ class authUserController {
     }
 }
 
-export { authUserController };
+export { AuthUserController };
