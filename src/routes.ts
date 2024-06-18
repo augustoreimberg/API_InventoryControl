@@ -1,4 +1,6 @@
 import { Router, Request, Response, request } from "express";
+import multer from "multer";
+import uploadConfig from "./config/multer"
 import { CreateUserController } from "./controllers/user/CreateUserController";
 import { AuthUserController } from "./controllers/user/AuthUserController";
 import { isAuthenticated } from "./middlewares/isAuthenticated";
@@ -10,6 +12,7 @@ import { ListCategoryController } from "./controllers/category/ListCategoryContr
 import { RemoveCategoryController } from "./controllers/category/RemoveCategoryController";
 
 const router = Router();
+const upload = multer(uploadConfig.upload("./tmp"))
 
 // User Routes
 router.post("/createNewUser", new CreateUserController().handle);
