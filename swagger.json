@@ -1,1 +1,208 @@
-{}
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Inventory Control",
+        "description": "API for stock control, with functionality to create, read, update and delete products, assign the appropriate classes for organization with user control to perform the actions",
+        "termOfService": "http://localhost:3333/terms",
+        "contact": {
+            "email": "augustoreimberg@gmail.com"
+        },
+        "version":"1.0.0"
+    },
+    "paths":{
+        "/v1/createNewUser":{
+            "post":{
+                "description": "Create user",
+                "tags":[
+                    "user"
+                ],
+                "request": {
+                    "requestBody": {
+                        "description": "Data required to create a new user",
+                        "content":{
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RequestCreateUser"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200": {
+                        "content":{
+                            "application/json": {
+                                "schema": { 
+                                    "$ref": "#/components/schemas/ResponseCreateUser"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/authUser":{
+            "post":{
+                "description": "Login and authenticate user",
+                "tags":[
+                    "user"
+                ],
+                "request": {
+                    "requestBody": {
+                        "description": "Data required to login and authenticate user",
+                        "content":{
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RequestAuthUser"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200": {
+                        "content":{
+                            "application/json": {
+                                "schema": { 
+                                    "$ref": "#/components/schemas/ResponseAuthUser"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/getUserById?userId={userId}":{
+            "get":{
+                "description": "Get user by ID",
+                "tags":[
+                    "user"
+                ],
+                "security":[
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
+                "parameters":[
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description":"User ID",
+                        "required": "true",
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses":{
+                    "200": {
+                        "content":{
+                            "application/json": {
+                                "schema": { 
+                                    "$ref": "#/components/schemas/ResponseCreateUser"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/user/remove?userId={userId}":{
+            "delete":{
+                "description": "Delete user",
+                "tags":[
+                    "user"
+                ],
+                "security":[
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
+                "parameters":[
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description":"User ID",
+                        "required": "true",
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses":{
+                    "200": {
+                        "content":{
+                            "application/json": {
+                                "schema": { 
+                                    "$ref": "#/components/schemas/ResponseDeleteUser"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "RequestCreateUser": {
+                "type": "object",
+                "properties": {
+                    "name":{
+                        "type": "string"
+                    },
+                    "email":{
+                        "type": "string"
+                    },
+                    "password":{
+                        "type": "string"
+                    }
+                }
+            },
+            "ResponseCreateUser": {
+                "type": "object",
+                "properties": {
+                    "id":{
+                        "type": "string"
+                    },
+                    "name":{
+                        "type": "string"
+                    },
+                    "email":{
+                        "type": "string"
+                    }
+                }
+            },
+            "RequestAuthUser": {
+                "type": "object",
+                "properties": {
+                    "email":{
+                        "type": "string"
+                    },
+                    "password":{
+                        "type": "string"
+                    }
+                }
+            },
+            "ResponseAuthUser": {
+                "type": "object",
+                "properties": {
+                    "id":{
+                        "type": "string"
+                    },
+                    "name":{
+                        "type": "string"
+                    },
+                    "email":{
+                        "type": "string"
+                    },
+                    "token":{
+                        "type": "string"
+                    }
+                }
+            },
+            "ResponseDeleteUser":{
+                "type":"object"
+            }
+        },
+        "securitySchemes": {}
+    }
+}
