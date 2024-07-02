@@ -13,7 +13,7 @@ class EditProductController {
             amount,
         }: EditProductRequest = request.body;
         const editProductService = new EditProductService();
-        const productEdited = editProductService.execute({
+        const productEdited = await editProductService.execute({
             name,
             price,
             description,

@@ -10,7 +10,7 @@ class RemoveProductController{
         const {productId}:RemoveProductRequest = request.body
 
         const removeProductService = new RemoveProductService()
-        const removeProduct = removeProductService.execute({productId})
+        const removeProduct = await removeProductService.execute({productId})
         return response.json(removeProduct)
     }
 }
