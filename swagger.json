@@ -284,6 +284,37 @@
                     }
                 }
             }
+        },
+        "/v1/product/edit": {
+            "put": {
+                "description": "Edit product",
+                "tags": ["product"],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RequestEditProduct"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseDeleteUser"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -427,6 +458,30 @@
                     },
                     "updated_at": {
                         "type": "string"
+                    }
+                }
+            },
+            "RequestEditProduct": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "price": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "productId": {
+                        "type": "string"
+                    },
+                    "amount": {
+                        "type": "string"
+                    },
+                    "file": {
+                        "type": "file",
+                        "format": "binary"
                     }
                 }
             }
