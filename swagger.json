@@ -315,6 +315,38 @@
                     }
                 }
             }
+        },
+        "/v1/product/listByCategory?categoryId={categoryId}": {
+            "get": {
+                "description": "Get products by category ID",
+                "tags": ["product"],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "Category ID",
+                        "required": "true",
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseCreateUser"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
