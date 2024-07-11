@@ -12,6 +12,8 @@ Created for inventory control with the following features:
 - Products: Create, read, update and remove products, including image upload when creating the product.
 - Sale: Update product, updating its value in inventory
 
+All routes have been documented using swagger
+
 ## Technologies
 
 - Node.js
@@ -19,6 +21,7 @@ Created for inventory control with the following features:
 - Express
 - Prisma
 - jsonwebtoken
-- bcrypt
-- multer
-- cors
+- bcryptjs
+- Multer
+- Cors
+- Swagger
