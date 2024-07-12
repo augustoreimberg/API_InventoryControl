@@ -25,3 +25,4 @@ All routes have been documented using swagger
 - Multer
 - Cors
 - Swagger
+- SQLite
